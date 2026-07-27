@@ -20,7 +20,12 @@ _SCHEMA_PATH = Path(__file__).resolve().parents[1] / "baseline" / "20260727_head
 
 def upgrade() -> None:
     schema_sql = _SCHEMA_PATH.read_text(encoding="utf-8")
-    op.get_bind().exec_driver_sql(schema_sql)
+    # The reviewed pg_dump contains literal percent characters in stored
+    # function bodies. Execute it through psycopg2's raw cursor so SQLAlchemy
+    # does not interpret those characters as parameter markers.
+    connection = op.get_bind().connection.driver_connection
+    with connection.cursor() as cursor:
+        cursor.execute(schema_sql)
 
 
 def downgrade() -> None:

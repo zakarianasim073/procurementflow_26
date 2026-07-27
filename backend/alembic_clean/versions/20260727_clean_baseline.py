@@ -25,7 +25,13 @@ def upgrade() -> None:
     # does not interpret those characters as parameter markers.
     connection = op.get_bind().connection.driver_connection
     with connection.cursor() as cursor:
-        cursor.execute(schema_sql)
+        for extension in ("vector", "pg_trgm", '"uuid-ossp"'):
+            cursor.execute(f"CREATE EXTENSION IF NOT EXISTS {extension}")
+        # Remove the three reviewed extension statements from the dump body.
+        # PostgreSQL parses a multi-statement query before executing it, so the
+        # vector type must exist before the body containing vector(384) parses.
+        schema_body = schema_sql.split("\n\n", 1)[1]
+        cursor.execute(schema_body)
 
 
 def downgrade() -> None:

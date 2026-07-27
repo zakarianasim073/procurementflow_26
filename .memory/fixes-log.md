@@ -93,3 +93,5 @@
   acquisition archive (SHA-256
   `28b2136c11c4c57d5cbdbbb37063a15d0f81296bfff94182402101a5f024f956`);
   its 64 parsed items exactly match the frozen parser contract.
+- Corrected the production PgBouncer listener to port 6432, matching the
+  application connection URL and container health check.

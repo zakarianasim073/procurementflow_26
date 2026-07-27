@@ -1,0 +1,1 @@
+export { RuleDetails } from './RuleDetails'

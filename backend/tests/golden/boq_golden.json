@@ -1,0 +1,456 @@
+{
+ "source": "boq_1290886.pdf",
+ "item_count": 64,
+ "codes": [
+  "04-180-00 (BWDB)",
+  "01.1 (PWD)",
+  "40-620-00 (BWDB)",
+  "40-640-00 (BWDB)",
+  "16-450-00 (BWDB)",
+  "02.1 (PWD)",
+  "16-620-00 (BWDB)",
+  "01.08 (LGED)",
+  "09.05 (PWD)",
+  "09.6 (PWD)",
+  "4.07.01.01",
+  "4.07.03 (LGED)",
+  "09.7 (PWD)",
+  "44-240-00 (BWDB)",
+  "44-290-00 (BWDB)",
+  "44-320-00 (BWDB)",
+  "44-340-00 (BWDB)",
+  "76-180-00 (BWDB)",
+  "72-180-00 (BWDB)",
+  "44-310-00 (BWDB)",
+  "20-495-00",
+  "12-310-00 (BWDB)",
+  "4.06.03 (LGED)",
+  "04.09.03 (LGED)",
+  "04.09.03 (LGED)",
+  "04.09.03 (LGED)",
+  "04.09.03 (LGED)",
+  "26.42 (PWD)",
+  "76-630-00 (BWDB)",
+  "76-170-00 (BWDB)",
+  "72-130-00 (BWDB)",
+  "04-280-00 (BWDB)",
+  "16-560-00 (BWDB)",
+  "16-550-00 (BWDB)",
+  "40-520-00 (BWDB)",
+  "40-520-00 (BWDB)",
+  "40-550-00 (BWDB)",
+  "40-500-00 (BWDB)",
+  "40-230-00 (BWDB)",
+  "40-230-00 (BWDB)",
+  "40-230-00 (BWDB)",
+  "40-270-00 (BWDB)",
+  "76-242-00 (BWDB)",
+  "76-252-00 (BWDB)",
+  "76-260-00 (BWDB)",
+  "76-190-00 (BWDB)",
+  "76-780-00 (BWDB)",
+  "16-470-00 (BWDB)",
+  "16-240-00 (BWDB)",
+  "48-100-00 (BWDB)",
+  "16-410-00 (BWDB)",
+  "16-400-00 (BWDB)",
+  "16-420-00 (BWDB)",
+  "16-720-00 (BWDB)",
+  "16-720-00 (BWDB)",
+  "16-100-00 (BWDB)",
+  "10-200-00 (BWDB)",
+  "32.6.1.1 (PWD)",
+  "01.7 (PWD)",
+  "12-110-00 (BWDB)",
+  "12-120-00 (BWDB)",
+  "12-150-00 (BWDB)",
+  "12-200-00 (BWDB)",
+  "12-160-00 (BWDB)"
+ ],
+ "items": [
+  {
+   "code": "04-180-00 (BWDB)",
+   "unit": "sqm",
+   "quantity": 18000.0,
+   "description_prefix": "Site preparation by manually removing all miscellaneous objectional materials fr"
+  },
+  {
+   "code": "01.1 (PWD)",
+   "unit": "job",
+   "quantity": 1.0,
+   "description_prefix": "Erection and maintenance of semi permanent site office and removal of the same a"
+  },
+  {
+   "code": "40-620-00 (BWDB)",
+   "unit": "no",
+   "quantity": 24375.0,
+   "description_prefix": "Supplying new Synthetic bags at site : 40-620-20: Capacity 75 kg."
+  },
+  {
+   "code": "40-640-00 (BWDB)",
+   "unit": "no",
+   "quantity": 24375.0,
+   "description_prefix": "Labour charge for filling empty gunny or synthetic bags with sand or earth, sewi"
+  },
+  {
+   "code": "16-450-00 (BWDB)",
+   "unit": "cum",
+   "quantity": 5264.78,
+   "description_prefix": "Earth work by manual labour with clayey soil (minimum 30% clay, 0-40% silt and 0"
+  },
+  {
+   "code": "02.1 (PWD)",
+   "unit": "cum",
+   "quantity": 28698.23,
+   "description_prefix": "Earth work in excavation in all kinds of soil for foundation trenches including "
+  },
+  {
+   "code": "16-620-00 (BWDB)",
+   "unit": "sqm",
+   "quantity": 1520.0,
+   "description_prefix": "Shoring for slope protection of foundation trench, canal, embankment, road, pond"
+  },
+  {
+   "code": "01.08 (LGED)",
+   "unit": "nos",
+   "quantity": 4.0,
+   "description_prefix": "Bench Mark Pillar: Manufacturing, supplying & fixing in position RCC (1:2:4) Ben"
+  },
+  {
+   "code": "09.05 (PWD)",
+   "unit": "point",
+   "quantity": 100073.0,
+   "description_prefix": "Providing and making point welding at contact point of the spiral binders at rea"
+  },
+  {
+   "code": "09.6 (PWD)",
+   "unit": "m of weld",
+   "quantity": 24.0,
+   "description_prefix": "Providing and making welded splice over two sides of contact by welding of minim"
+  },
+  {
+   "code": "4.07.01.01",
+   "unit": "m",
+   "quantity": 4243.5,
+   "description_prefix": "BCIS: Boring for cast-in-situ"
+  },
+  {
+   "code": "4.07.03 (LGED)",
+   "unit": "cum",
+   "quantity": 1633.75,
+   "description_prefix": "RCC-25SCCM: Reinforced cement concrete work for cast-"
+  },
+  {
+   "code": "09.7 (PWD)",
+   "unit": "cum",
+   "quantity": 42.62,
+   "description_prefix": "Labour for breaking head of hardened cast in situ bored pile/ pre-cast pile up t"
+  },
+  {
+   "code": "44-240-00 (BWDB)",
+   "unit": "m. ton",
+   "quantity": 40.61,
+   "description_prefix": "Supplying at site U-Type hot rolled steel sheet pile of different section of Pho"
+  },
+  {
+   "code": "44-290-00 (BWDB)",
+   "unit": "sqm",
+   "quantity": 317.25,
+   "description_prefix": "Driving steel sheet piles of various sections and weights in any type of soil, b"
+  },
+  {
+   "code": "44-320-00 (BWDB)",
+   "unit": "m",
+   "quantity": 28.4,
+   "description_prefix": "Cutting of steel sheet piles to design length and shape as per requirement in de"
+  },
+  {
+   "code": "44-340-00 (BWDB)",
+   "unit": "m",
+   "quantity": 24.0,
+   "description_prefix": "Fabrication and construction of corner Joints in steel sheet piles including cut"
+  },
+  {
+   "code": "76-180-00 (BWDB)",
+   "unit": "sqm",
+   "quantity": 2250.36,
+   "description_prefix": "Cleaning corrosion and rust from the surface of steel with power brush etc. Comp"
+  },
+  {
+   "code": "72-180-00 (BWDB)",
+   "unit": "sqm",
+   "quantity": 2250.36,
+   "description_prefix": "Provide 1 (one) coat of Zinc phosphate as primary coat and 2 (two) coat of coalt"
+  },
+  {
+   "code": "44-310-00 (BWDB)",
+   "unit": "sqm",
+   "quantity": 34.28,
+   "description_prefix": "Supplying and placing 20mm thick hessian cloth impregnated with bitumen in expan"
+  },
+  {
+   "code": "20-495-00",
+   "unit": "sqm",
+   "quantity": 536.7,
+   "description_prefix": "Polythene Sheet : (1.0 kg per 6.50 sqm)."
+  },
+  {
+   "code": "12-310-00 (BWDB)",
+   "unit": "cum",
+   "quantity": 164905.65,
+   "description_prefix": "Bailing out of water with all leads and lifts by manual labour or pump, with all"
+  },
+  {
+   "code": "4.06.03 (LGED)",
+   "unit": "cum",
+   "quantity": 45.39,
+   "description_prefix": "PCC-10: Plain cement concrete work in foundation with minimum compressive streng"
+  },
+  {
+   "code": "04.09.03 (LGED)",
+   "unit": "cum",
+   "quantity": 461.26,
+   "description_prefix": "RCC-25SCCM: Reinforced cement concrete work with minimum cement content relates "
+  },
+  {
+   "code": "04.09.03 (LGED)",
+   "unit": "cum",
+   "quantity": 416.06,
+   "description_prefix": "RCC-25SCCM: Reinforced cement concrete work with minimum cement content relates "
+  },
+  {
+   "code": "04.09.03 (LGED)",
+   "unit": "cum",
+   "quantity": 82.79,
+   "description_prefix": "RCC-25SCCM: Reinforced cement concrete work with minimum cement content relates "
+  },
+  {
+   "code": "04.09.03 (LGED)",
+   "unit": "cum",
+   "quantity": 38.87,
+   "description_prefix": "RCC-25SCCM: Reinforced cement concrete work with minimum cement content relates "
+  },
+  {
+   "code": "26.42 (PWD)",
+   "unit": "m",
+   "quantity": 87.24,
+   "description_prefix": "Supplying, fitting and fixing of G.I. pipe with all special fittings, such as be"
+  },
+  {
+   "code": "76-630-00 (BWDB)",
+   "unit": "m",
+   "quantity": 45.0,
+   "description_prefix": "Supply and fitting and fixing 23cm wide P.V.C water stops having minimum strengt"
+  },
+  {
+   "code": "76-170-00 (BWDB)",
+   "unit": "kg",
+   "quantity": 26695.94,
+   "description_prefix": "M.S. Work in plates, angles, channels, flat bars, Tees etc. including fabricatin"
+  },
+  {
+   "code": "72-130-00 (BWDB)",
+   "unit": "sqm",
+   "quantity": 50.1,
+   "description_prefix": "Synthentic enamel painting to steel surfaces/ gates/ hoists etc. with paint of a"
+  },
+  {
+   "code": "04-280-00 (BWDB)",
+   "unit": "m",
+   "quantity": 11.2,
+   "description_prefix": "Constructing at site, cement mortar gauge on masonry wall, including engraving i"
+  },
+  {
+   "code": "16-560-00 (BWDB)",
+   "unit": "cum",
+   "quantity": 4968.21,
+   "description_prefix": "Back filling in hydraulic structures including all leads and lifts with sand in "
+  },
+  {
+   "code": "16-550-00 (BWDB)",
+   "unit": "cum",
+   "quantity": 9096.47,
+   "description_prefix": "Back filling in hydraulic structures and slope building in protective works incl"
+  },
+  {
+   "code": "40-520-00 (BWDB)",
+   "unit": "cum",
+   "quantity": 105.3,
+   "description_prefix": "Supplying and laying dry 1st class or pick jhama chips as filter in two layers ("
+  },
+  {
+   "code": "40-520-00 (BWDB)",
+   "unit": "cum",
+   "quantity": 105.3,
+   "description_prefix": "Supplying and laying dry 1st class or pick jhama chips as filter in two layers ("
+  },
+  {
+   "code": "40-550-00 (BWDB)",
+   "unit": "cum",
+   "quantity": 108.27,
+   "description_prefix": "Supplying and laying sand as filter layers as per specific size ranges and grada"
+  },
+  {
+   "code": "40-500-00 (BWDB)",
+   "unit": "sqm",
+   "quantity": 1169.95,
+   "description_prefix": "Supplying and placing non- woven needle punched type geotextile fabric (97% Poly"
+  },
+  {
+   "code": "40-230-00 (BWDB)",
+   "unit": "each",
+   "quantity": 1118.0,
+   "description_prefix": "Manufacturing and supplying C.C. blocks in leanest mix. 1:2:4 with cement, sand "
+  },
+  {
+   "code": "40-230-00 (BWDB)",
+   "unit": "each",
+   "quantity": 1099.0,
+   "description_prefix": "Manufacturing and supplying C.C. blocks in leanest mix. 1:2:4 with cement, sand "
+  },
+  {
+   "code": "40-230-00 (BWDB)",
+   "unit": "each",
+   "quantity": 4301.0,
+   "description_prefix": "Manufacturing and supplying C.C. blocks in leanest mix. 1:2:4 with cement, sand "
+  },
+  {
+   "code": "40-270-00 (BWDB)",
+   "unit": "cum",
+   "quantity": 364.31,
+   "description_prefix": "Labour charge for protective works in laying CC blocks of different sizes includ"
+  },
+  {
+   "code": "76-242-00 (BWDB)",
+   "unit": "each",
+   "quantity": 3.0,
+   "description_prefix": "Manufacturing & Supplying of M.S. Vertical Lift Gate shutter having 10mm thick M"
+  },
+  {
+   "code": "76-252-00 (BWDB)",
+   "unit": "each",
+   "quantity": 3.0,
+   "description_prefix": "Manufacturing & Supplying of M.S. Flap Gate shutter of 10mm thick M.S. skin plat"
+  },
+  {
+   "code": "76-260-00 (BWDB)",
+   "unit": "each",
+   "quantity": 6.0,
+   "description_prefix": "Labour charge for fitting and fixing of M.S. vertical lift gate/ flap gate shutt"
+  },
+  {
+   "code": "76-190-00 (BWDB)",
+   "unit": "each",
+   "quantity": 3.0,
+   "description_prefix": "Manufacturing, supplying and Installation of Padestal type lifting device for sl"
+  },
+  {
+   "code": "76-780-00 (BWDB)",
+   "unit": "each",
+   "quantity": 74.0,
+   "description_prefix": "Supplying and fitting, fixing dowel bar in expansion each joints of hydraulic st"
+  },
+  {
+   "code": "16-470-00 (BWDB)",
+   "unit": "cum",
+   "quantity": 6503.64,
+   "description_prefix": "Earth work by manual labour, in all kinds of soil in removing the cross bundh/ r"
+  },
+  {
+   "code": "16-240-00 (BWDB)",
+   "unit": "cum",
+   "quantity": 4234.33,
+   "description_prefix": "Earth work by Mechanical Excavator (Long Boom) in constructing/ resectioning of "
+  },
+  {
+   "code": "48-100-00 (BWDB)",
+   "unit": "sqm",
+   "quantity": 21440.0,
+   "description_prefix": "Fine dressing and close turfing of the slopes and the crest of embankment with 7"
+  },
+  {
+   "code": "16-410-00 (BWDB)",
+   "unit": "cum",
+   "quantity": 22611.77,
+   "description_prefix": "Earth work by Mechanical Excavator ( Long Boom ) in all kinds of soil in excavat"
+  },
+  {
+   "code": "16-400-00 (BWDB)",
+   "unit": "cum",
+   "quantity": 14115.16,
+   "description_prefix": "Earth work by manual labour in all kinds of soil in excavation or reexcavation o"
+  },
+  {
+   "code": "16-420-00 (BWDB)",
+   "unit": "cum",
+   "quantity": 4234.55,
+   "description_prefix": "Extra Rate for every additional shift of Dredged/Excavated earth or shifting of "
+  },
+  {
+   "code": "16-720-00 (BWDB)",
+   "unit": "cum/ km",
+   "quantity": 5522.8,
+   "description_prefix": "Filling ditch/pond/channel/khal etc or land development/ improvment by dredged e"
+  },
+  {
+   "code": "16-720-00 (BWDB)",
+   "unit": "cum/ km",
+   "quantity": 5522.8,
+   "description_prefix": "Filling ditch/pond/channel/khal etc or land development/ improvment by dredged e"
+  },
+  {
+   "code": "16-100-00 (BWDB)",
+   "unit": "nos",
+   "quantity": 22.0,
+   "description_prefix": "Erection of bamboo profile with full bamboo posts and pegs not less than 60mm in"
+  },
+  {
+   "code": "10-200-00 (BWDB)",
+   "unit": "nos",
+   "quantity": 28.0,
+   "description_prefix": "Topography Survey of embankment/road/canal/river Section (Section with upto 50m)"
+  },
+  {
+   "code": "32.6.1.1 (PWD)",
+   "unit": "cum",
+   "quantity": 126.0,
+   "description_prefix": "Dismantling of R.C.C. beam, lintel, column, drop wall, sun shade from any height"
+  },
+  {
+   "code": "01.7 (PWD)",
+   "unit": "sqm",
+   "quantity": 3000.0,
+   "description_prefix": "Mobilization and cleaning site before commencing actual physical work and during"
+  },
+  {
+   "code": "12-110-00 (BWDB)",
+   "unit": "ps/ km",
+   "quantity": 1.0,
+   "description_prefix": "Mobilization of complete well point system, equipments and accessories from one "
+  },
+  {
+   "code": "12-120-00 (BWDB)",
+   "unit": "set",
+   "quantity": 1.0,
+   "description_prefix": "Installation of well point dewatering set including supply of all accessories, m"
+  },
+  {
+   "code": "12-150-00 (BWDB)",
+   "unit": "hours",
+   "quantity": 1200.0,
+   "description_prefix": "Operation of well point system, by 5 cusec vacuum pump for dewatering of subsurf"
+  },
+  {
+   "code": "12-200-00 (BWDB)",
+   "unit": "hours",
+   "quantity": 400.0,
+   "description_prefix": "Operation of tubewell by centrifugal pump for dewatering of subsurface water, ma"
+  },
+  {
+   "code": "12-160-00 (BWDB)",
+   "unit": "ps/ km",
+   "quantity": 1.0,
+   "description_prefix": "Demobilization of complete well point system, equipments and accessories from on"
+  }
+ ]
+}

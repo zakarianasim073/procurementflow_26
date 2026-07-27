@@ -1,0 +1,1 @@
+export { CompetitorWidget } from './CompetitorWidget'

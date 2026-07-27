@@ -1,0 +1,1 @@
+export { OpportunityTable } from './OpportunityTable'

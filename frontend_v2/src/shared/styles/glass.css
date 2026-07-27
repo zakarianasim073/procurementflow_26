@@ -1,0 +1,66 @@
+/*
+ * Glass-card visual system, ported from frontend/src/styles/glass.css (ADR-007: read-only
+ * source). Values reference CSS custom properties from tokens.css (generated from
+ * tokens.json, ADR-004) rather than hard-coded hex/rgba wherever the token format supports
+ * it — shadows, radii, durations, and solid neutrals are all tokenized.
+ *
+ * KNOWN EXCEPTION (documented, not silently left over): the border and background-gradient
+ * stops below stay as literal `rgb(... / alpha)` values. tokens.json currently stores colors
+ * as hex strings with no alpha channel, so they can't express "gray-200 at 80% opacity"
+ * without either a color-mix() approach or adding parallel R-G-B-triplet tokens — a real
+ * change to the token format, out of scope for this ticket. Tracked as a follow-up; these 3
+ * translucency values are the only ones in the whole design system not sourced from tokens.css.
+ */
+
+.glass-card {
+  border-radius: var(--radius-xl);
+  border: 1px solid rgb(226 232 240 / 0.8); /* see KNOWN EXCEPTION above */
+  background: linear-gradient(135deg, rgb(255 255 255 / 0.9), rgb(248 250 252 / 0.75)); /* see KNOWN EXCEPTION above */
+  backdrop-filter: blur(12px);
+  box-shadow: var(--elevation-glass-shadow);
+  transition: transform var(--motion-duration-base) var(--motion-easing-standard),
+    box-shadow var(--motion-duration-base) var(--motion-easing-standard);
+}
+
+.glass-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--elevation-glass-shadow-hover);
+}
+
+.dark .glass-card {
+  border-color: rgb(51 65 85 / 0.6); /* see KNOWN EXCEPTION above */
+  background: linear-gradient(135deg, rgb(30 41 59 / 0.85), rgb(15 23 42 / 0.75)); /* see KNOWN EXCEPTION above */
+  box-shadow: var(--elevation-glass-shadow-dark);
+}
+
+.hero-stat {
+  animation: hero-stat-in var(--motion-duration-slow) var(--motion-easing-standard) both;
+}
+
+@keyframes hero-stat-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-stat { animation: none; }
+  .glass-card, .glass-card:hover { transform: none; transition: none; }
+  .skeleton { animation: none; }
+}
+
+.skeleton {
+  border-radius: var(--radius-sm);
+  background: linear-gradient(90deg, var(--color-gray-200) 25%, var(--color-gray-100) 50%, var(--color-gray-200) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer var(--motion-duration-shimmer) infinite;
+}
+
+.dark .skeleton {
+  background: linear-gradient(90deg, var(--color-gray-700) 25%, var(--color-gray-600) 50%, var(--color-gray-700) 75%);
+  background-size: 200% 100%;
+}
+
+@keyframes skeleton-shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}

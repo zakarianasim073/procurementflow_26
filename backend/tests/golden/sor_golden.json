@@ -1,0 +1,585 @@
+{
+ "find_rate": [
+  {
+   "code": "04-180-00",
+   "description": "",
+   "agency": "BWDB",
+   "zone": "A",
+   "expect": {
+    "rate": 40.59,
+    "matched_code": "04-180-00",
+    "matched_agency": "BWDB",
+    "unit": "sqm"
+   }
+  },
+  {
+   "code": "04-180-00",
+   "description": "",
+   "agency": "BWDB",
+   "zone": "B",
+   "expect": {
+    "rate": 44.52,
+    "matched_code": "04-180-00",
+    "matched_agency": "BWDB",
+    "unit": "sqm"
+   }
+  },
+  {
+   "code": "04-180-00",
+   "description": "",
+   "agency": "BWDB",
+   "zone": "C",
+   "expect": {
+    "rate": 43.61,
+    "matched_code": "04-180-00",
+    "matched_agency": "BWDB",
+    "unit": "sqm"
+   }
+  },
+  {
+   "code": "04-180-00",
+   "description": "",
+   "agency": "BWDB",
+   "zone": "D",
+   "expect": {
+    "rate": 43.54,
+    "matched_code": "04-180-00",
+    "matched_agency": "BWDB",
+    "unit": "sqm"
+   }
+  },
+  {
+   "code": "08-100",
+   "description": "",
+   "agency": "BWDB",
+   "zone": "A",
+   "expect": {
+    "rate": 2.21,
+    "matched_code": "08-100-10",
+    "matched_agency": "BWDB",
+    "unit": "m"
+   }
+  },
+  {
+   "code": "04-815-00(BWDB)",
+   "description": "",
+   "agency": "PWD",
+   "zone": "B",
+   "expect": {
+    "rate": 102053.43,
+    "matched_code": "04-815-00",
+    "matched_agency": "BWDB",
+    "unit": "cum"
+   }
+  },
+  {
+   "code": "01.1.1",
+   "description": "",
+   "agency": "PWD",
+   "zone": "A",
+   "expect": {
+    "rate": 50308.0,
+    "matched_code": "01.1.1",
+    "matched_agency": "PWD",
+    "unit": "job"
+   }
+  },
+  {
+   "code": "01.1.1(PWD)",
+   "description": "",
+   "agency": "BWDB",
+   "zone": "C",
+   "expect": {
+    "rate": 50308.0,
+    "matched_code": "01.1.1",
+    "matched_agency": "PWD",
+    "unit": "job"
+   }
+  },
+  {
+   "code": "01.1.4.1",
+   "description": "",
+   "agency": "PWD",
+   "zone": "D",
+   "expect": {
+    "rate": 38651.0,
+    "matched_code": "01.1.4.1",
+    "matched_agency": "PWD",
+    "unit": "set"
+   }
+  },
+  {
+   "code": "1.01.01",
+   "description": "",
+   "agency": "LGED",
+   "zone": "A",
+   "expect": {
+    "rate": 50308.0,
+    "matched_code": "1.01.01",
+    "matched_agency": "LGED",
+    "unit": "job"
+   }
+  },
+  {
+   "code": "1.01.01(LGED)",
+   "description": "",
+   "agency": "BWDB",
+   "zone": "D",
+   "expect": {
+    "rate": 50308.0,
+    "matched_code": "1.01.01",
+    "matched_agency": "LGED",
+    "unit": "job"
+   }
+  },
+  {
+   "code": "1.02",
+   "description": "",
+   "agency": "LGED",
+   "zone": "C",
+   "expect": {
+    "rate": 16755.53,
+    "matched_code": "1.02",
+    "matched_agency": "LGED",
+    "unit": "sqm"
+   }
+  },
+  {
+   "code": "XX&01.1.2",
+   "description": "",
+   "agency": "PWD",
+   "zone": "A",
+   "expect": {
+    "rate": 80370.0,
+    "matched_code": "01.1.2",
+    "matched_agency": "PWD",
+    "unit": "job"
+   }
+  },
+  {
+   "code": "ZZZ-999-99",
+   "description": "",
+   "agency": "BWDB",
+   "zone": "A",
+   "expect": null
+  },
+  {
+   "code": "",
+   "description": "Engineer's site office of minimum 10 sqm plinth area with office furniture",
+   "agency": "PWD",
+   "zone": "A",
+   "expect": {
+    "rate": 50308.0,
+    "matched_code": "01.1.1",
+    "matched_agency": "PWD",
+    "unit": "job"
+   }
+  },
+  {
+   "code": "NOCODE",
+   "description": "Project Profile Signboard providing and fixing typical project profile signboard retro-reflective",
+   "agency": "LGED",
+   "zone": "B",
+   "expect": {
+    "rate": 16825.93,
+    "matched_code": "1.02",
+    "matched_agency": "LGED",
+    "unit": "sqm"
+   }
+  },
+  {
+   "code": "04-180-00",
+   "description": "",
+   "agency": "BWDB",
+   "zone": "A",
+   "expect": {
+    "rate": 40.59,
+    "matched_code": "04-180-00",
+    "matched_agency": "BWDB",
+    "unit": "sqm"
+   }
+  },
+  {
+   "code": "04-180-00",
+   "description": "",
+   "agency": "BWDB",
+   "zone": "D",
+   "expect": {
+    "rate": 43.54,
+    "matched_code": "04-180-00",
+    "matched_agency": "BWDB",
+    "unit": "sqm"
+   }
+  },
+  {
+   "code": "04-280-10",
+   "description": "",
+   "agency": "BWDB",
+   "zone": "A",
+   "expect": {
+    "rate": 103.08,
+    "matched_code": "04-280-10",
+    "matched_agency": "BWDB",
+    "unit": "m"
+   }
+  },
+  {
+   "code": "04-280-10",
+   "description": "",
+   "agency": "BWDB",
+   "zone": "D",
+   "expect": {
+    "rate": 108.37,
+    "matched_code": "04-280-10",
+    "matched_agency": "BWDB",
+    "unit": "m"
+   }
+  },
+  {
+   "code": "04-815-00",
+   "description": "",
+   "agency": "BWDB",
+   "zone": "A",
+   "expect": {
+    "rate": 104.0,
+    "matched_code": "04-815-00",
+    "matched_agency": "BWDB",
+    "unit": "cum"
+   }
+  },
+  {
+   "code": "04-815-00",
+   "description": "",
+   "agency": "BWDB",
+   "zone": "D",
+   "expect": {
+    "rate": 97749.34,
+    "matched_code": "04-815-00",
+    "matched_agency": "BWDB",
+    "unit": "cum"
+   }
+  },
+  {
+   "code": "08-100-10",
+   "description": "",
+   "agency": "BWDB",
+   "zone": "A",
+   "expect": {
+    "rate": 2.21,
+    "matched_code": "08-100-10",
+    "matched_agency": "BWDB",
+    "unit": "m"
+   }
+  },
+  {
+   "code": "08-100-10",
+   "description": "",
+   "agency": "BWDB",
+   "zone": "D",
+   "expect": {
+    "rate": 2.39,
+    "matched_code": "08-100-10",
+    "matched_agency": "BWDB",
+    "unit": "m"
+   }
+  },
+  {
+   "code": "08-100-20",
+   "description": "",
+   "agency": "BWDB",
+   "zone": "A",
+   "expect": {
+    "rate": 1.84,
+    "matched_code": "08-100-20",
+    "matched_agency": "BWDB",
+    "unit": "m"
+   }
+  },
+  {
+   "code": "08-100-20",
+   "description": "",
+   "agency": "BWDB",
+   "zone": "D",
+   "expect": {
+    "rate": 1.99,
+    "matched_code": "08-100-20",
+    "matched_agency": "BWDB",
+    "unit": "m"
+   }
+  },
+  {
+   "code": "01.1.1",
+   "description": "",
+   "agency": "PWD",
+   "zone": "A",
+   "expect": {
+    "rate": 50308.0,
+    "matched_code": "01.1.1",
+    "matched_agency": "PWD",
+    "unit": "job"
+   }
+  },
+  {
+   "code": "01.1.1",
+   "description": "",
+   "agency": "PWD",
+   "zone": "D",
+   "expect": {
+    "rate": 50308.0,
+    "matched_code": "01.1.1",
+    "matched_agency": "PWD",
+    "unit": "job"
+   }
+  },
+  {
+   "code": "01.1.2",
+   "description": "",
+   "agency": "PWD",
+   "zone": "A",
+   "expect": {
+    "rate": 80370.0,
+    "matched_code": "01.1.2",
+    "matched_agency": "PWD",
+    "unit": "job"
+   }
+  },
+  {
+   "code": "01.1.2",
+   "description": "",
+   "agency": "PWD",
+   "zone": "D",
+   "expect": {
+    "rate": 80370.0,
+    "matched_code": "01.1.2",
+    "matched_agency": "PWD",
+    "unit": "job"
+   }
+  },
+  {
+   "code": "01.1.3",
+   "description": "",
+   "agency": "PWD",
+   "zone": "A",
+   "expect": {
+    "rate": 487130.0,
+    "matched_code": "01.1.3",
+    "matched_agency": "PWD",
+    "unit": "job"
+   }
+  },
+  {
+   "code": "01.1.3",
+   "description": "",
+   "agency": "PWD",
+   "zone": "D",
+   "expect": {
+    "rate": 487130.0,
+    "matched_code": "01.1.3",
+    "matched_agency": "PWD",
+    "unit": "job"
+   }
+  },
+  {
+   "code": "01.1.4.1",
+   "description": "",
+   "agency": "PWD",
+   "zone": "A",
+   "expect": {
+    "rate": 38651.0,
+    "matched_code": "01.1.4.1",
+    "matched_agency": "PWD",
+    "unit": "set"
+   }
+  },
+  {
+   "code": "01.1.4.1",
+   "description": "",
+   "agency": "PWD",
+   "zone": "D",
+   "expect": {
+    "rate": 38651.0,
+    "matched_code": "01.1.4.1",
+    "matched_agency": "PWD",
+    "unit": "set"
+   }
+  },
+  {
+   "code": "01.1.4.2",
+   "description": "",
+   "agency": "PWD",
+   "zone": "A",
+   "expect": {
+    "rate": 10798.0,
+    "matched_code": "01.1.4.2",
+    "matched_agency": "PWD",
+    "unit": "set"
+   }
+  },
+  {
+   "code": "01.1.4.2",
+   "description": "",
+   "agency": "PWD",
+   "zone": "D",
+   "expect": {
+    "rate": 10798.0,
+    "matched_code": "01.1.4.2",
+    "matched_agency": "PWD",
+    "unit": "set"
+   }
+  },
+  {
+   "code": "1.01.01",
+   "description": "",
+   "agency": "LGED",
+   "zone": "A",
+   "expect": {
+    "rate": 50308.0,
+    "matched_code": "1.01.01",
+    "matched_agency": "LGED",
+    "unit": "job"
+   }
+  },
+  {
+   "code": "1.01.01",
+   "description": "",
+   "agency": "LGED",
+   "zone": "D",
+   "expect": {
+    "rate": 50308.0,
+    "matched_code": "1.01.01",
+    "matched_agency": "LGED",
+    "unit": "job"
+   }
+  },
+  {
+   "code": "1.01.02",
+   "description": "",
+   "agency": "LGED",
+   "zone": "A",
+   "expect": {
+    "rate": 80370.0,
+    "matched_code": "1.01.02",
+    "matched_agency": "LGED",
+    "unit": "job"
+   }
+  },
+  {
+   "code": "1.01.02",
+   "description": "",
+   "agency": "LGED",
+   "zone": "D",
+   "expect": {
+    "rate": 80370.0,
+    "matched_code": "1.01.02",
+    "matched_agency": "LGED",
+    "unit": "job"
+   }
+  },
+  {
+   "code": "1.01.03",
+   "description": "",
+   "agency": "LGED",
+   "zone": "A",
+   "expect": {
+    "rate": 487130.0,
+    "matched_code": "1.01.03",
+    "matched_agency": "LGED",
+    "unit": "job"
+   }
+  },
+  {
+   "code": "1.01.03",
+   "description": "",
+   "agency": "LGED",
+   "zone": "D",
+   "expect": {
+    "rate": 487130.0,
+    "matched_code": "1.01.03",
+    "matched_agency": "LGED",
+    "unit": "job"
+   }
+  },
+  {
+   "code": "1.02",
+   "description": "",
+   "agency": "LGED",
+   "zone": "A",
+   "expect": {
+    "rate": 16872.86,
+    "matched_code": "1.02",
+    "matched_agency": "LGED",
+    "unit": "sqm"
+   }
+  },
+  {
+   "code": "1.02",
+   "description": "",
+   "agency": "LGED",
+   "zone": "D",
+   "expect": {
+    "rate": 16755.53,
+    "matched_code": "1.02",
+    "matched_agency": "LGED",
+    "unit": "sqm"
+   }
+  },
+  {
+   "code": "1.03",
+   "description": "",
+   "agency": "LGED",
+   "zone": "A",
+   "expect": {
+    "rate": 16215.0,
+    "matched_code": "1.03",
+    "matched_agency": "LGED",
+    "unit": "each"
+   }
+  },
+  {
+   "code": "1.03",
+   "description": "",
+   "agency": "LGED",
+   "zone": "D",
+   "expect": {
+    "rate": 16215.0,
+    "matched_code": "1.03",
+    "matched_agency": "LGED",
+    "unit": "each"
+   }
+  }
+ ],
+ "find_rate_by_description": [
+  {
+   "description": "Engineer's site office of minimum 15 sqm plinth area with water purifier",
+   "agency": "PWD",
+   "zone": "A",
+   "unit": "job",
+   "expect": {
+    "rate": 80370.0,
+    "matched_code": "01.1.2",
+    "score": 0.86
+   },
+   "score": 0.86
+  },
+  {
+   "description": "land removing debris including",
+   "agency": "BWDB",
+   "zone": "B",
+   "unit": "sqm",
+   "expect": {
+    "rate": 44.52,
+    "matched_code": "04-180-00",
+    "score": 0.975
+   },
+   "score": 0.975
+  },
+  {
+   "description": "completely unrelated gibberish text zzz qqq",
+   "agency": "PWD",
+   "zone": "A",
+   "unit": "",
+   "expect": null,
+   "score": 0.074
+  }
+ ]
+}

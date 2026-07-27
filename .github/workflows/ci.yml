@@ -1,0 +1,117 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  containers:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgresql+asyncpg://postgres:ci-password@postgres:5432/procureflow_bd
+      PGBOUNCER_URL: postgresql+asyncpg://postgres:ci-password@pgbouncer:6432/procureflow_bd
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ci-password
+      POSTGRES_DB: procureflow_bd
+      MINIO_ACCESS_KEY: ci-minio-access
+      MINIO_SECRET_KEY: ci-minio-secret
+      MINIO_ROOT_USER: ci-minio-root
+      MINIO_ROOT_PASSWORD: ci-minio-password
+      JWT_SECRET: ci-access-secret-that-is-not-used-in-production
+      JWT_REFRESH_SECRET: ci-refresh-secret-that-is-not-used-in-production
+      OWNER_EMAIL: ci-owner@example.invalid
+      OWNER_PASSWORD: ci-owner-password
+      GRAFANA_ADMIN_USER: ci-admin
+      GRAFANA_ADMIN_PASSWORD: ci-grafana-password
+    steps:
+    - uses: actions/checkout@v4
+    - name: Validate production Compose
+      run: docker compose -f docker-compose.yml -f docker-compose.prod.yml config --quiet
+    - name: Build application images
+      run: docker compose -f docker-compose.yml -f docker-compose.prod.yml build backend frontend
+
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test_db
+        options: >-
+          --health-cmd "pg_isready -U postgres -d test_db"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:7-alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 5
+    env:
+      ENVIRONMENT: test
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@localhost:5432/test_db
+      REDIS_URL: redis://localhost:6379/0
+      JWT_SECRET: ci-access-secret-that-is-not-used-in-production
+      JWT_REFRESH_SECRET: ci-refresh-secret-that-is-not-used-in-production
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: "3.10"
+        cache: pip
+        cache-dependency-path: backend/requirements.txt
+    - run: python -m pip install -r requirements.txt
+      working-directory: backend
+    - run: python -m pip check
+      working-directory: backend
+    - run: python -m alembic upgrade head
+      working-directory: backend
+    - run: python -m alembic current
+      working-directory: backend
+    - run: python -m pytest -q
+      working-directory: backend
+    - name: Verify tracked source is unchanged
+      run: test -z "$(git status --porcelain --untracked-files=no)"
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test_db
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+      working-directory: frontend_v2
+    - run: npm run lint
+      working-directory: frontend_v2
+    - run: npm run build
+      working-directory: frontend_v2
+    - run: npm test -- --run
+      working-directory: frontend_v2
+    - name: Security audit
+      run: npm audit --audit-level high
+      working-directory: frontend_v2
+    - name: Verify tracked source is unchanged
+      run: test -z "$(git status --porcelain --untracked-files=no)"

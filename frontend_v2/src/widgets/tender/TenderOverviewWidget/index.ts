@@ -1,0 +1,1 @@
+export { TenderOverviewWidget } from './TenderOverviewWidget'

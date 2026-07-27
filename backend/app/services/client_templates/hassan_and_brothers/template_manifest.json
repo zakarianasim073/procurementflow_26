@@ -1,0 +1,13 @@
+{
+  "client": "M/S. Hassan & Brothers",
+  "email": "hbl.engr@gmail.com",
+  "version": "1.0",
+  "works_only": true,
+  "templates": [
+    {"output": "4_Equipment_Declaration.docx", "template": "Equipment_Declaration_Template.docx", "sources": ["Notice", "TDS", "client dossier"]},
+    {"output": "5_Manpower_Declaration.docx", "template": "Manpower_Declaration_Template.docx", "sources": ["Notice", "TDS", "client dossier"]},
+    {"output": "6_Methodology.docx", "template": "Methodology_Template.docx", "sources": ["Notice", "TDS", "BOQ"]},
+    {"output": "7_Work_Plan.xlsx", "template": "Work_Plan_Template.xlsx", "sources": ["Notice", "TDS", "BOQ"]},
+    {"output": "8_BOQ_Rate_Analysis.xlsx", "template": "BOQ_Rate_Analysis_Template.xlsx", "sources": ["BOQ", "BWDB/LGED/PWD SOR", "TDS"]}
+  ]
+}

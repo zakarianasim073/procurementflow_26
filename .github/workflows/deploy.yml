@@ -1,23 +1,23 @@
-name: Deploy to Production
+name: Deploy immutable production revision
 
 on:
-  workflow_run:
-    workflows: ["Continuous Integration"]
-    types: [completed]
-    branches: [main]
+  workflow_dispatch:
+    inputs:
+      release_sha:
+        description: "Full commit SHA that passed Continuous Integration"
+        required: true
+        type: string
 
 concurrency:
-  group: production
+  group: production-deploy
   cancel-in-progress: false
 
 jobs:
   deploy:
-    if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     environment: production
-
     steps:
-      - name: Configure authenticated SSH
+      - name: Configure restricted deployment SSH
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
           DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
@@ -28,39 +28,44 @@ jobs:
           printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
 
-      - name: Deploy immutable full-stack revision
+      - name: Deploy immutable application revision
         env:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
-          RELEASE_SHA: ${{ github.event.workflow_run.head_sha }}
+          RELEASE_SHA: ${{ inputs.release_sha }}
         run: |
-          ssh "$DEPLOY_USER@$DEPLOY_HOST" bash -s -- "$DEPLOY_PATH" "$RELEASE_SHA" <<'REMOTE'
+          test "${#RELEASE_SHA}" -eq 40
+          ssh "$DEPLOY_USER@$DEPLOY_HOST" bash -s -- "$RELEASE_SHA" <<'REMOTE'
           set -euo pipefail
-          DEPLOY_PATH="$1"
-          RELEASE_SHA="$2"
-          cd "$DEPLOY_PATH"
+          release_sha="$1"
+          app_path=/opt/procureflow/app
+          env_file=/opt/procureflow/secrets/.env.production
+          cd "$app_path"
 
-          test -f .env
-          PREVIOUS_SHA="$(git rev-parse HEAD)"
-          git fetch --prune origin
-          git cat-file -e "${RELEASE_SHA}^{commit}"
-          git checkout --detach "$RELEASE_SHA"
-          python scripts/verify_release_clean.py
+          test -f "$env_file"
+          previous_sha="$(git rev-parse HEAD)"
+          git fetch --prune origin codex/procureflow-enterprise
+          git cat-file -e "${release_sha}^{commit}"
+          git checkout --detach "$release_sha"
+          python3 scripts/verify_release_clean.py
 
-          COMPOSE="docker compose -f docker-compose.yml -f docker-compose.prod.yml"
-          $COMPOSE config --quiet
-          $COMPOSE build backend worker-high worker-default worker-low frontend
-          $COMPOSE up -d postgres redis minio pgbouncer
-          $COMPOSE run --rm backend alembic upgrade head
-          $COMPOSE up -d backend worker-high worker-default worker-low frontend tempo postgres-exporter node-exporter prometheus grafana flower nginx
+          compose="sudo docker compose --env-file $env_file -f docker-compose.yml -f docker-compose.prod.yml"
+          $compose config --quiet
+          $compose build backend worker-high worker-default worker-low frontend
+          $compose up -d postgres redis minio minio-init pgbouncer
+          $compose up -d backend worker-high worker-default worker-low frontend nginx
 
-          if ! curl --fail --retry 12 --retry-delay 5 --retry-connrefused http://127.0.0.1:8000/api/ready; then
-            git checkout --detach "$PREVIOUS_SHA"
-            $COMPOSE build backend worker-high worker-default worker-low frontend
-            $COMPOSE up -d backend worker-high worker-default worker-low frontend
+          if ! curl --fail --retry 18 --retry-delay 5 --retry-connrefused \
+              -H 'Host: api.procureflowbd.com' http://127.0.0.1/api/ready; then
+            git checkout --detach "$previous_sha"
+            $compose build backend worker-high worker-default worker-low frontend
+            $compose up -d backend worker-high worker-default worker-low frontend nginx
             exit 1
           fi
-          curl --fail --retry 12 --retry-delay 5 --retry-connrefused https://app.procureflow.com/api/ready
-          printf '%s\n' "$RELEASE_SHA" > .deployed-revision
+
+          printf '%s\n' "$release_sha" > /opt/procureflow/releases/current
           REMOTE
+
+      - name: Verify public API after DNS and TLS activation
+        if: ${{ vars.PRODUCTION_TLS_ACTIVE == 'true' }}
+        run: curl --fail --retry 12 --retry-delay 5 https://api.procureflowbd.com/api/ready

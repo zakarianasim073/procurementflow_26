@@ -5,7 +5,7 @@ from pydantic_settings import BaseSettings
 from typing import List, Optional
 from functools import lru_cache
 from pathlib import Path
-from pydantic import field_validator
+from pydantic import Field, field_validator
 from dotenv import load_dotenv
 
 # Explicitly load .env from the project root directory first
@@ -145,7 +145,14 @@ class Settings(BaseSettings):
     MAX_UPLOAD_SIZE_MB: int = int(os.environ.get("MAX_UPLOAD_SIZE_MB", "50"))
 
     # S3/MinIO Configuration
-    S3_BUCKET: str = os.environ.get("S3_BUCKET", "procureflow-documents")
+    # MinIO is the production S3 implementation; one private bucket contains
+    # uploads/outputs/templates/embeddings/exports prefixes.
+    S3_BUCKET: str = Field(
+        default_factory=lambda: os.environ.get(
+            "S3_BUCKET",
+            os.environ.get("MINIO_BUCKET", "procurementflow-tenders"),
+        )
+    )
     S3_ENDPOINT: str = os.environ.get("S3_ENDPOINT", "")
     S3_ACCESS_KEY: str = os.environ.get("S3_ACCESS_KEY", "")
     S3_SECRET_KEY: str = os.environ.get("S3_SECRET_KEY", "")

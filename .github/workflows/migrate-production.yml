@@ -1,0 +1,49 @@
+name: Run production database migration
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_sha:
+        description: "Full commit SHA whose migration will be applied"
+        required: true
+        type: string
+
+concurrency:
+  group: production-migration
+  cancel-in-progress: false
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    environment: production-migration
+    steps:
+      - name: Configure restricted deployment SSH
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Run direct-to-PostgreSQL Alembic migration
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          RELEASE_SHA: ${{ inputs.release_sha }}
+        run: |
+          test "${#RELEASE_SHA}" -eq 40
+          ssh "$DEPLOY_USER@$DEPLOY_HOST" bash -s -- "$RELEASE_SHA" <<'REMOTE'
+          set -euo pipefail
+          release_sha="$1"
+          app_path=/opt/procureflow/app
+          env_file=/opt/procureflow/secrets/.env.production
+          cd "$app_path"
+          test "$(git rev-parse HEAD)" = "$release_sha"
+          compose="sudo docker compose --env-file $env_file -f docker-compose.yml -f docker-compose.prod.yml"
+          $compose --profile migration config --quiet
+          $compose up -d postgres
+          $compose --profile migration run --rm migration
+          REMOTE

@@ -10,15 +10,19 @@ jobs:
   containers:
     runs-on: ubuntu-latest
     env:
+      PRODUCTION_ENV_FILE: .env.production.example
       DATABASE_URL: postgresql+asyncpg://postgres:ci-password@postgres:5432/procureflow_bd
       PGBOUNCER_URL: postgresql+asyncpg://postgres:ci-password@pgbouncer:6432/procureflow_bd
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ci-password
       POSTGRES_DB: procureflow_bd
+      REDIS_PASSWORD: ci-redis-password
+      REDIS_URL: redis://:ci-redis-password@redis:6379/0
       MINIO_ACCESS_KEY: ci-minio-access
       MINIO_SECRET_KEY: ci-minio-secret
       MINIO_ROOT_USER: ci-minio-root
       MINIO_ROOT_PASSWORD: ci-minio-password
+      MINIO_BUCKET: procurementflow-tenders
       JWT_SECRET: ci-access-secret-that-is-not-used-in-production
       JWT_REFRESH_SECRET: ci-refresh-secret-that-is-not-used-in-production
       OWNER_EMAIL: ci-owner@example.invalid
@@ -28,7 +32,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Validate production Compose
-      run: docker compose -f docker-compose.yml -f docker-compose.prod.yml config --quiet
+      run: |
+        docker compose --profile "*" -f docker-compose.yml -f docker-compose.prod.yml config --quiet
+        docker compose --profile "*" -f docker-compose.yml -f docker-compose.prod.yml config --format json > /tmp/procureflow-compose.json
+        python scripts/validate_production_compose.py /tmp/procureflow-compose.json
     - name: Build application images
       run: docker compose -f docker-compose.yml -f docker-compose.prod.yml build backend frontend
 

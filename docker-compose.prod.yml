@@ -1,20 +1,20 @@
 services:
   nginx:
-    image: nginx:1.27-alpine
+    image: nginx:1.27.5-alpine
     container_name: procurementflow-nginx
     restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - ./deploy/nginx/procureflow.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./deploy/nginx/procureflow.http.conf:/etc/nginx/conf.d/default.conf:ro
       - certbot_www:/var/www/certbot
       - letsencrypt:/etc/letsencrypt
     depends_on:
       - frontend
       - backend
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80/"]
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:80/health"]
       interval: 10s
       timeout: 5s
       retries: 3
@@ -28,7 +28,7 @@ services:
       - procurementflow-net
 
   certbot:
-    image: certbot/certbot:latest
+    image: certbot/certbot:v2.11.0
     container_name: procurementflow-certbot
     profiles: ["ssl"]
     volumes:
@@ -41,8 +41,7 @@ services:
     image: prom/prometheus:v2.55.1
     container_name: procurementflow-prometheus
     restart: unless-stopped
-    ports:
-      - "9090:9090"
+    profiles: ["observability"]
     volumes:
       - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - prometheus_data:/prometheus
@@ -70,8 +69,7 @@ services:
     image: grafana/grafana:11.3.1
     container_name: procurementflow-grafana
     restart: unless-stopped
-    ports:
-      - "3001:3000"
+    profiles: ["observability"]
     environment:
       - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER:?GRAFANA_ADMIN_USER is required}
       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:?GRAFANA_ADMIN_PASSWORD is required}
@@ -91,6 +89,29 @@ services:
         limits:
           cpus: "0.5"
           memory: 256m
+    networks:
+      - procurementflow-net
+
+  migration:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    profiles: ["migration"]
+    restart: "no"
+    command: alembic upgrade head
+    env_file:
+      - path: ${PRODUCTION_ENV_FILE:-.env}
+        required: true
+    environment:
+      DATABASE_URL: ${DATABASE_URL:?DATABASE_URL is required}
+      PGBOUNCER_URL: ""
+      ENVIRONMENT: production
+      JWT_SECRET: ${JWT_SECRET:?JWT_SECRET is required}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:?JWT_REFRESH_SECRET is required}
+      REDIS_URL: ${REDIS_URL:?REDIS_URL is required}
+    depends_on:
+      postgres:
+        condition: service_healthy
     networks:
       - procurementflow-net
 

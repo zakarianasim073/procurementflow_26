@@ -21,6 +21,8 @@ data/
 
 # Environment
 .env
+.env.production
+.env.production.local
 .deployed-revision
 .env.local
 .env.prod

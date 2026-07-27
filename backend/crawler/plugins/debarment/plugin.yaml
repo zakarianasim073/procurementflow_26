@@ -1,0 +1,13 @@
+name: debarment
+version: "1.0.0"
+module: crawler.plugins.debarment.debarment_crawler
+class: DebarmentCrawler
+description: Debarment/blacklist data from bppa.gov.bd via Playwright.
+author: procureflow
+config:
+  source: bppa_debarment
+  table: raw_debarment
+  max_pages: 50
+  rate_limit: 3.0
+  use_checkpoints: true
+  entity_type: debarment

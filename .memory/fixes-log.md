@@ -1,5 +1,24 @@
 # ProcureFlow fixes log
 
+## 2026-07-27 — Phase 3.5 crawler restoration and CPU production image
+
+- Restored the previously untracked `backend/crawler` package from the reviewed
+  original development working tree after confirming it did not exist in any
+  repository branch, tag, submodule, or sparse-checkout.
+- Added an HTTPS/public-host outbound policy, DNS private-address rejection,
+  TLS certificate verification, safe download paths and ZIP extraction, and
+  structured-log redaction for crawler credentials and document content.
+- Split the production CPU dependency entry point from the optional GPU profile,
+  pinned direct ML/observability dependencies, installed CPU-only PyTorch,
+  Tesseract OCR, and Chromium for the real crawler runtime, and changed the
+  backend container to a non-root runtime user.
+- Added crawler security tests and Docker-context exclusions for local documents,
+  outputs, models, caches, tests, and secrets. No database schema, API contract,
+  Works-only rule, production service, DNS, certificate, or credential changed.
+- Restored the tracked `backend/loadtest` package from authoritative original
+  repository commit `39513fbe7582e7aaf6b9a315ca60c0cd6585ec26`; its test had
+  been copied into the deployment snapshot without the implementation.
+
 ## 2026-07-27 — Phase 3 production Compose remediation
 
 - Removed every private host-published port; only container Nginx publishes

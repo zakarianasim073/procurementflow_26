@@ -1,0 +1,13 @@
+name: offline_tender
+version: "1.0.0"
+module: crawler.plugins.tender.offline_crawler
+class: OfflineTenderCrawler
+description: Offline tender crawl (SearchTenderOffline.jsp).
+author: procureflow
+config:
+  source: eprocure_offline_tender
+  table: raw_offline_tenders
+  max_pages: 50
+  rate_limit: 3.0
+  use_checkpoints: true
+  entity_type: tender

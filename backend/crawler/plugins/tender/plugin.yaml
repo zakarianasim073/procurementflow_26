@@ -1,0 +1,14 @@
+name: tender
+version: "1.0.0"
+module: crawler.plugins.tender.tender_crawler
+class: TenderCrawler
+description: Live e-GP tender listings crawl via TenderDetailsServlet (httpx-based, no Playwright).
+author: procureflow
+config:
+  search_mode: listings
+  source: eprocure_tender
+  table: raw_tenders
+  max_pages: 50
+  rate_limit: 2.0
+  use_checkpoints: true
+  entity_type: tender

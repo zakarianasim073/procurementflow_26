@@ -1,0 +1,15 @@
+name: documents
+version: "1.0.0"
+module: crawler.plugins.documents.document_crawler
+class: DocumentCrawler
+description: Tender document download (Notice PDF + all-sections ZIP) + classification + knowledge feed.
+author: procureflow
+config:
+  source: eprocure_documents
+  table: raw_documents
+  max_pages: 50
+  rate_limit: 3.0
+  use_checkpoints: true
+  entity_type: document
+  download_zip: true
+  classify: true

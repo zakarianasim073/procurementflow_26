@@ -1,0 +1,36 @@
+name: documents
+version: "1.0"
+description: "e-GP tender document downloader (ZIP, PDF, BOQ)"
+
+config:
+  mode: incremental
+  max_pages: 1
+  rate_limit: 3.0
+  checkpoint_key: document_download
+
+search:
+  url: ""
+  wait_until: networkidle
+
+fields:
+  tender_id:
+    required: true
+  notice_pdf_url:
+  zip_download_url:
+  boq_url:
+  tds_url:
+
+documents:
+  type: all
+  url_field: download_url
+  allowed_types:
+    - pdf
+    - zip
+    - docx
+    - xlsx
+
+download:
+  notice_pdf:
+    url_template: "https://www.eprocure.gov.bd/resources/common/GeneratePdf?reqURL=http://www.eprocure.gov.bd/resources/common/ViewTender.jsp&reqQuery=id={tender_id}&folderName=TenderNotice&id={tender_id}"
+  all_documents_zip:
+    url_template: "https://www.eprocure.gov.bd/TenderSecUploadServlet?tenderId={tender_id}&folderArchId=1&lotNo=Package&funName=zipdownload"

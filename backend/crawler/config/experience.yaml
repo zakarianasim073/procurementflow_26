@@ -1,0 +1,51 @@
+name: experience
+version: "2.0"
+description: "e-Experience certificate crawler (contractor work history)"
+
+config:
+  mode: incremental
+  max_pages: 100
+  table: raw_experience
+  source: eprocure_experience
+  rate_limit: 2.0
+  checkpoint_key: experience_crawl
+
+search:
+  url: "https://www.eprocure.gov.bd/resources/common/SearcheCMS.jsp?tab=All"
+  wait_until: networkidle
+
+list:
+  selector: "table"
+  item_selector: "tr"
+
+fields:
+  s_no:
+    column: 0
+  ministry:
+    column: 1
+  procurement_nature:
+    column: 2
+  title:
+    column: 3
+  contract_awarded_to:
+    column: 4
+  company_unique_id:
+    column: 5
+  experience_cert_no:
+    column: 6
+  contract_amount_bdt:
+    column: 7
+  contract_dates:
+    column: 8
+  work_status:
+    column: 9
+
+pagination:
+  type: next_button
+  selector: "a:has-text('Next')"
+
+validation:
+  experience_cert_no:
+    - type: required
+  contract_awarded_to:
+    - type: required

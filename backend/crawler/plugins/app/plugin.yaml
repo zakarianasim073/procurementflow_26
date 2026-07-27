@@ -1,0 +1,13 @@
+name: app
+version: "1.0.0"
+module: crawler.plugins.app.app_crawler
+class: APPCrawler
+description: Annual Procurement Plan (APP) listings crawl.
+author: procureflow
+config:
+  source: eprocure_app
+  table: raw_app
+  max_pages: 50
+  rate_limit: 3.0
+  use_checkpoints: true
+  entity_type: app

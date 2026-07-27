@@ -1,0 +1,13 @@
+name: offline_award
+version: "1.0.0"
+module: crawler.plugins.award.offline_award_crawler
+class: OfflineAwardCrawler
+description: Offline awarded contract crawl (SearchAwardedContractOffline.jsp).
+author: procureflow
+config:
+  source: eprocure_offline_award
+  table: raw_offline_awards
+  max_pages: 50
+  rate_limit: 3.0
+  use_checkpoints: true
+  entity_type: award

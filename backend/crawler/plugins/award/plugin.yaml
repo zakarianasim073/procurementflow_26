@@ -1,0 +1,13 @@
+name: award
+version: "1.0.0"
+module: crawler.plugins.award.award_crawler
+class: AwardCrawler
+description: Award/NOA detail extraction via Playwright (SearchNOA.jsp).
+author: procureflow
+config:
+  source: eprocure_award
+  table: raw_awards
+  max_pages: 50
+  rate_limit: 3.0
+  use_checkpoints: true
+  entity_type: award

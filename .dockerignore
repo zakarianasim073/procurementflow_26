@@ -20,5 +20,16 @@ env/
 .env.local
 *.db
 *.sqlite
+*.pdf
+*.zip
+*.xlsx
+*.xls
+*.doc
+*.docx
+uploads/
+outputs/
+runtime/
+models/
+.cache/
 .DS_Store
 node_modules/

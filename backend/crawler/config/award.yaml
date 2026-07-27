@@ -1,0 +1,63 @@
+name: award
+version: "2.0"
+description: "e-GP Awarded Contracts (NOA) crawler"
+
+config:
+  mode: incremental
+  max_pages: 100
+  table: raw_awards
+  source: eprocure_award
+  rate_limit: 2.0
+  checkpoint_key: award_crawl
+
+search:
+  url: "https://www.eprocure.gov.bd/resources/common/SearchNOA.jsp"
+  wait_until: networkidle
+
+list:
+  selector: "a[href*='ViewAwardedContracts']"
+  item_selector: "a[href*='ViewAwardedContracts']"
+
+detail:
+  url_template: "https://www.eprocure.gov.bd/resources/common/{href}"
+  url_field: href
+
+fields:
+  tender_id:
+    sources: ["Tender/Proposal ID"]
+    required: true
+  reference_no:
+    sources: ["Invitation/Proposal Reference No", "Reference No"]
+  ministry:
+    sources: ["Ministry/Division", "Ministry"]
+  pe_name:
+    sources: ["Procuring Entity Name", "Procuring Entity"]
+  award_for:
+    sources: ["Contract Award for", "Award For"]
+  procurement_method:
+    sources: ["Procurement Method"]
+  package_no:
+    sources: ["Tender/Proposal Package No", "Package No"]
+    required: true
+  contract_value_bdt:
+    sources: ["Contract Value", "Amount in BDT"]
+    normalize: ["strip", "remove_commas"]
+  economic_operator_name:
+    sources: ["Name of the Economic Operator", "Contractor Name", "Winner"]
+  economic_operator_id:
+    sources: ["Tenderer ID of the Economic Operator", "Tenderer ID"]
+  contract_signing_date:
+    sources: ["Date of Contract Signing", "Signing Date"]
+
+pagination:
+  type: next_button
+  selector: "a:has-text('Next')"
+
+validation:
+  tender_id:
+    - type: required
+  package_no:
+    - type: required
+  contract_value_bdt:
+    - type: min_value
+      min: 0

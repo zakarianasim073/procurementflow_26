@@ -1,0 +1,3 @@
+# Optional development/GPU profile. Never used by the production Dockerfile.
+torch==2.6.0
+-r requirements.txt

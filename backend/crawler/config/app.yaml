@@ -1,0 +1,83 @@
+name: app
+version: "2.0"
+description: "Annual Procurement Plan crawler for Bangladesh e-GP"
+
+config:
+  mode: incremental
+  max_pages: 50
+  table: raw_app_packages
+  source: eprocure_app
+  rate_limit: 2.0
+  checkpoint_key: app_crawl
+
+search:
+  url: "https://www.eprocure.gov.bd/resources/common/DeptTree.jsp?operation=AdvAPPSearch"
+  wait_until: networkidle
+
+list:
+  selector: "table"
+  item_selector: "a[href*='ViewPackageDetail']"
+
+detail:
+  url_template: "https://www.eprocure.gov.bd/resources/common/{href}"
+  url_field: href
+
+fields:
+  app_id:
+    sources: ["APP ID", "App ID"]
+    required: true
+  pkg_id:
+    sources: ["Package ID", "Pkg ID"]
+    normalize: ["strip"]
+  app_code:
+    sources: ["APP Code"]
+  financial_year:
+    sources: ["Financial Year", "Fiscal Year"]
+  ministry:
+    sources: ["Ministry"]
+  organization:
+    sources: ["Organization", "Organisation"]
+  pe_office:
+    sources: ["PE Office and Code", "Procuring Entity"]
+  budget_type:
+    sources: ["Budget Type"]
+  project_name:
+    sources: ["Project Name", "Project"]
+  district:
+    sources: ["District"]
+  package_no:
+    sources: ["Package No", "Package Number"]
+    required: true
+  package_description:
+    sources: ["Package Description", "Description"]
+  estimated_cost:
+    sources: ["Package Estimated Cost", "Estimated Cost"]
+    normalize: ["strip", "remove_commas"]
+  category:
+    sources: ["Category"]
+  procurement_method:
+    sources: ["Procurement Method"]
+  procurement_type:
+    sources: ["Procurement Type"]
+  source_of_fund:
+    sources: ["Source of Fund"]
+  exp_advertisement_date:
+    sources: ["Expected Date of Advertisement"]
+  exp_contract_signing_date:
+    sources: ["Expected Date of Signing of Contract"]
+  exp_completion_date:
+    sources: ["Expected Date of Completion of Contract"]
+  lots:
+    sources: ["Lots"]
+
+pagination:
+  type: next_button
+  selector: "a:has-text('Next')"
+  max_pages: 50
+
+validation:
+  app_id:
+    - type: required
+  package_no:
+    - type: required
+      message: "Package number is required for APP linkage"

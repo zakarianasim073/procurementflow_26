@@ -1,0 +1,75 @@
+name: tender
+version: "2.0"
+description: "e-GP Live/Archive tender crawler"
+
+config:
+  mode: incremental
+  max_pages: 100
+  page_size: 50
+  table: raw_tenders
+  source: eprocure_tender
+  rate_limit: 2.0
+  checkpoint_key: tender_crawl
+  search_mode: listings
+  view_types: ["Live"]
+  timeout: 70.0
+
+search:
+  url: "https://www.eprocure.gov.bd/resources/common/AllTenders.jsp?h=t"
+  wait_until: networkidle
+
+list:
+  selector: "table tr"
+  item_selector: "a[href*='ViewTender']"
+
+detail:
+  url_template: "https://www.eprocure.gov.bd/resources/common/{href}"
+  url_field: href
+
+fields:
+  tender_id:
+    sources: ["Tender/Proposal ID", "Tender ID"]
+    required: true
+  app_id:
+    sources: ["App ID"]
+  reference_no:
+    sources: ["Invitation Reference No", "Reference No", "Reference Number"]
+  status:
+    sources: ["Tender/Proposal Status", "Status"]
+  ministry:
+    sources: ["Ministry/Division", "Ministry"]
+  organization:
+    sources: ["Organization", "Organisation"]
+  procuring_entity_name:
+    sources: ["Procuring Entity Name", "Procuring Entity"]
+  procurement_nature:
+    sources: ["Procurement Nature"]
+  procurement_type:
+    sources: ["Procurement Type"]
+  procurement_method:
+    sources: ["Procurement Method"]
+  package_no:
+    sources: ["Tender/Proposal Package No", "Package No"]
+  publish_datetime:
+    sources: ["Date and Time", "Publishing Date"]
+  closing_datetime:
+    sources: ["Tender/Proposal Closing", "Closing Date/Time", "Closing Date"]
+  document_price_bdt:
+    sources: ["Tender/Proposal Document Price", "Document Price"]
+  category:
+    sources: ["Category"]
+  earnest_money_bdt:
+    sources: ["Earnest Money", "Earnest Money (EM)"]
+  tender_security_bdt:
+    sources: ["Tender Security", "Security"]
+
+pagination:
+  type: next_button
+  selector: "a:has-text('Next')"
+
+validation:
+  tender_id:
+    - type: required
+  package_no:
+    - type: required
+      severity: warning

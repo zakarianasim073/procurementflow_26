@@ -1,0 +1,13 @@
+name: experience
+version: "1.0.0"
+module: crawler.plugins.experience.experience_crawler
+class: ExperienceCrawler
+description: eExperience certificate extraction via Playwright (SearcheCMS.jsp).
+author: procureflow
+config:
+  source: eprocure_experience
+  table: raw_experience
+  max_pages: 50
+  rate_limit: 3.0
+  use_checkpoints: true
+  entity_type: experience

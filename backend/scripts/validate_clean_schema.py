@@ -36,7 +36,7 @@ def main() -> int:
 
     baseline = args.baseline.read_text(encoding="utf-8")
     expected_tables = _qualified_names(
-        r"CREATE TABLE\s+([a-z_][a-z0-9_]*)\.([a-z_][a-z0-9_]*)",
+        r"CREATE (?:UNLOGGED )?TABLE\s+([a-z_][a-z0-9_]*)\.([a-z_][a-z0-9_]*)",
         baseline,
     )
     expected_indexes = {
@@ -104,7 +104,7 @@ def main() -> int:
             "extensions": sorted(REQUIRED_EXTENSIONS - actual_extensions),
         },
         "unexpected": {
-            "tables": sorted(actual_tables - expected_tables),
+            "tables": sorted(actual_tables - expected_tables - {"public.alembic_version"}),
         },
         "vector_column": vector_column,
         "alembic_revisions": alembic_revisions,

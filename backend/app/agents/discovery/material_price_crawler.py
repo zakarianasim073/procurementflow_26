@@ -111,7 +111,7 @@ class MaterialPriceCrawlerAgent(BaseAgent):
         for target in self.TARGETS:
             results["targets_attempted"] += 1
             try:
-                async with httpx.AsyncClient(verify=False, timeout=20, follow_redirects=True) as client:
+                async with httpx.AsyncClient(verify=True, timeout=20, follow_redirects=True) as client:
                     resp = await client.get(target["url"], headers=self.BROWSER_HEADERS)
                     if resp.status_code != 200:
                         results["errors"].append(f"{target['name']}: HTTP {resp.status_code}")

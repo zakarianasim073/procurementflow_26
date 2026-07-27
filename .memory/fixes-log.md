@@ -33,6 +33,8 @@
 - Pinned the production image build tooling to `pip==26.1.2` and
   `setuptools==83.0.0`, clearing the compatible build-tool findings from the
   final dependency audit without changing the application framework.
+- Removed the remaining TLS-certificate bypasses from the portal explorer and
+  material-price crawler so all production HTTP clients verify certificates.
 
 ## 2026-07-27 — Phase 3 production Compose remediation
 

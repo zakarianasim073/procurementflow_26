@@ -51,7 +51,7 @@ class PortalExplorer:
         
         try:
             import httpx
-            c = httpx.Client(verify=False, follow_redirects=True, timeout=15)
+            c = httpx.Client(verify=True, follow_redirects=True, timeout=15)
             r = c.get(BASE_URL)
             
             # Find all links/sections
@@ -94,7 +94,7 @@ class PortalExplorer:
         
         # Get tender details
         import httpx
-        c = httpx.Client(verify=False, follow_redirects=True, timeout=15)
+        c = httpx.Client(verify=True, follow_redirects=True, timeout=15)
         
         # Public view
         r = c.post(f"{BASE_URL}/resources/common/ViewTender.jsp",

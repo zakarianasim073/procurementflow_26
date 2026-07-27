@@ -87,3 +87,5 @@
 - Restored the authoritative versioned regulatory seed, pilot-tenant profiles
   and MOU-gated onboarding assets omitted from the release snapshot; isolated
   test databases now seed regulatory rules after migration.
+- Added disposable real-MinIO coverage to the isolated production gate,
+  including a live store, fetch and delete round trip against the pinned image.

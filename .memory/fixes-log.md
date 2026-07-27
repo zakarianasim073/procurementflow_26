@@ -89,3 +89,7 @@
   test databases now seed regulatory rules after migration.
 - Added disposable real-MinIO coverage to the isolated production gate,
   including a live store, fetch and delete round trip against the pinned image.
+- Restored the missing real e-GP BOQ 1290886 golden fixture from the existing
+  acquisition archive (SHA-256
+  `28b2136c11c4c57d5cbdbbb37063a15d0f81296bfff94182402101a5f024f956`);
+  its 64 parsed items exactly match the frozen parser contract.

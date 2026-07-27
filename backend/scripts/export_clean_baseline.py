@@ -25,10 +25,10 @@ VECTOR_COMPATIBILITY = """\
 -- Add an indexed pgvector representation without removing the legacy
 -- JSON/text embedding column still consumed by the application.
 ALTER TABLE public.knowledge_embeddings
-    ADD COLUMN embedding_vector vector(384);
+    ADD COLUMN embedding_vector public.vector(384);
 CREATE INDEX ix_knowledge_embeddings_vector_hnsw
     ON public.knowledge_embeddings
-    USING hnsw (embedding_vector vector_cosine_ops);
+    USING hnsw (embedding_vector public.vector_cosine_ops);
 """
 
 

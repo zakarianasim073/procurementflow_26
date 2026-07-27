@@ -80,3 +80,7 @@
 - Updated four async API suites to HTTPX's supported `ASGITransport` interface;
   removal of the obsolete `AsyncClient(app=...)` argument had caused 79 setup
   errors rather than application test results.
+- Restored the high-priority discovery task's explicit Celery time limits and
+  aligned its test with the authoritative `task_annotations` configuration.
+- Exposed the root Compose contract inside the isolated backend test copy so
+  queue-worker topology tests do not depend on the caller's working directory.

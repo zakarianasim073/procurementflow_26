@@ -125,6 +125,7 @@ celery_app.conf.update(
     # Per-task ceilings by queue (moved here from task_routes, which broke .delay()).
     task_annotations={
         # HIGH queue (15m soft / 20m hard)
+        "pipeline_discovery": {"soft_time_limit": _LIMITS[QUEUE_HIGH][0], "time_limit": _LIMITS[QUEUE_HIGH][1]},
         "app.workers.tasks.notification_tasks.*": {"soft_time_limit": _LIMITS[QUEUE_HIGH][0], "time_limit": _LIMITS[QUEUE_HIGH][1]},
         # DEFAULT queue (25m soft / 30m hard) — agents, BOQ, documents, pipeline
         "run_agent_task": {"soft_time_limit": _LIMITS[QUEUE_DEFAULT][0], "time_limit": _LIMITS[QUEUE_DEFAULT][1]},

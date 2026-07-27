@@ -78,10 +78,9 @@ def test_low_priority_tasks_route_to_low():
 
 
 def test_per_queue_time_limits():
-    router = celery_app.amqp.router
-    opts = celery_app.conf.task_routes
-    high_soft = router.route(opts, "pipeline_discovery").get("soft_time_limit")
-    low_soft = router.route(opts, "app.workers.tasks.report_tasks.generate_report").get("soft_time_limit")
+    annotations = celery_app.conf.task_annotations
+    high_soft = annotations["pipeline_discovery"]["soft_time_limit"]
+    low_soft = annotations["app.workers.tasks.report_tasks.*"]["soft_time_limit"]
     # low gets a longer budget than high (least urgent, most expensive)
     assert high_soft == 15 * 60
     assert low_soft == 45 * 60

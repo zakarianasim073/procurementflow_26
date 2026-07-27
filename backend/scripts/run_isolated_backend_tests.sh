@@ -2,6 +2,7 @@
 set -Eeuo pipefail
 
 SOURCE_DIR="${1:-$(cd "$(dirname "$0")/.." && pwd)}"
+REPO_DIR="$(cd "$SOURCE_DIR/.." && pwd)"
 REPORT_DIR="${2:-/tmp/procureflow-test-reports}"
 shift $(( $# >= 2 ? 2 : $# ))
 PYTEST_TARGETS=("$@")
@@ -44,6 +45,7 @@ docker exec "$REDIS" redis-cli -a "$REDIS_PASSWORD" ping >/dev/null
 docker run --rm --network "$NETWORK" \
   --user 0:0 \
   --mount "type=bind,src=${SOURCE_DIR},dst=/source,readonly" \
+  --mount "type=bind,src=${REPO_DIR}/docker-compose.yml,dst=/repo-compose.yml,readonly" \
   --mount "type=bind,src=${REPORT_DIR},dst=/reports" \
   --tmpfs /testwork:rw,size=2g,mode=1777 \
   -e ENVIRONMENT=test \
@@ -62,6 +64,7 @@ docker run --rm --network "$NETWORK" \
   -e OPENAI_API_KEY= -e ANTHROPIC_API_KEY= \
   --entrypoint /bin/sh "$IMAGE" -c '
     cp -a /source /testwork/backend
+    cp /repo-compose.yml /testwork/docker-compose.yml
     chown -R procureflow:procureflow /testwork/backend /reports
     python -m pip install --no-cache-dir -r /testwork/backend/requirements-test.txt >/dev/null
     su -s /bin/sh procureflow -c "

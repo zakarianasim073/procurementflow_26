@@ -26,7 +26,7 @@ services:
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers ${API_WORKERS:-3}
     volumes:
       - backend_data:/data
-      - ./backend/app/sor:/app/sor
+      - ./backend/app/sor:/workspace/backend/app/sor
     depends_on:
       postgres:
         condition: service_healthy
@@ -73,7 +73,7 @@ services:
       - ENVIRONMENT=production
     volumes:
       - backend_data:/data
-      - ./backend/app/sor:/app/sor
+      - ./backend/app/sor:/workspace/backend/app/sor
     depends_on:
       postgres:
         condition: service_healthy
@@ -117,7 +117,7 @@ services:
       - ENVIRONMENT=production
     volumes:
       - backend_data:/data
-      - ./backend/app/sor:/app/sor
+      - ./backend/app/sor:/workspace/backend/app/sor
     depends_on:
       postgres:
         condition: service_healthy
@@ -161,7 +161,7 @@ services:
       - ENVIRONMENT=production
     volumes:
       - backend_data:/data
-      - ./backend/app/sor:/app/sor
+      - ./backend/app/sor:/workspace/backend/app/sor
     depends_on:
       postgres:
         condition: service_healthy

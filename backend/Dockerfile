@@ -1,6 +1,9 @@
 FROM python:3.12.11-slim-bookworm
 
-WORKDIR /app
+ENV PYTHONPATH=/workspace/backend:/workspace \
+    PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+
+WORKDIR /workspace/backend
 
 # Install system deps
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -22,15 +25,13 @@ RUN pip install --no-cache-dir \
 
 # Copy app
 COPY . .
-RUN mkdir -p /app/backend \
-    && cp -a /app/crawler /app/backend/crawler \
-    && touch /app/backend/__init__.py
 
 # Create runtime directories
-RUN mkdir -p /data/uploads /data/outputs /data/tenders /data/.procurementflow-system
+RUN mkdir -p /data/uploads /data/outputs /data/tenders /data/.procurementflow-system \
+    /workspace/backend/runtime
 RUN groupadd --system procureflow \
-    && useradd --system --gid procureflow --home-dir /app procureflow \
-    && chown -R procureflow:procureflow /app /data
+    && useradd --system --gid procureflow --home-dir /workspace/backend procureflow \
+    && chown -R procureflow:procureflow /workspace /data /ms-playwright
 
 USER procureflow
 

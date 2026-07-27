@@ -18,6 +18,9 @@
 - Restored the tracked `backend/loadtest` package from authoritative original
   repository commit `39513fbe7582e7aaf6b9a315ca60c0cd6585ec26`; its test had
   been copied into the deployment snapshot without the implementation.
+- Preserved the repository-root/backend filesystem relationship inside the
+  container at `/workspace/backend`, which application runtime-path discovery
+  requires on Linux, and placed Playwright browsers in a shared non-root path.
 
 ## 2026-07-27 — Phase 3 production Compose remediation
 

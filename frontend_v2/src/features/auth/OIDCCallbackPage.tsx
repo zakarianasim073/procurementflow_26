@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import { safeInternalPath } from '@shared/lib/safeNavigation'
 import { AlertCircle, Loader2 } from 'lucide-react'
 import { ScreenTemplate } from '@layouts/index'
 import { setAuthToken } from '@entities/authToken'
@@ -59,7 +60,7 @@ export function OIDCCallbackPage() {
           }
 
           // Redirect to dashboard or original page
-          const referrer = sessionStorage.getItem('auth_referrer') || '/executive'
+          const referrer = safeInternalPath(sessionStorage.getItem('auth_referrer'))
           sessionStorage.removeItem('auth_referrer')
           navigate(referrer)
         } else {

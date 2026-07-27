@@ -23,6 +23,13 @@
   requires on Linux, and placed Playwright browsers in a shared non-root path.
 - Added the missing pinned `pypdf` runtime dependency discovered by importing
   the actual FastAPI application inside the CPU image.
+- Mitigated the React Router 6 open-redirect advisories without a breaking
+  Router 7 upgrade by restricting login, OIDC, and SAML post-authentication
+  navigation to normalized same-origin application paths.
+- Upgraded direct PDF, JWT, multipart-upload, dotenv, and pdfminer-consuming
+  dependencies to their current patched compatible releases after the
+  production-image vulnerability scan; removed the unused legacy PyPDF2
+  distribution.
 
 ## 2026-07-27 — Phase 3 production Compose remediation
 

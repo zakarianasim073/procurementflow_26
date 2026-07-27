@@ -5,6 +5,7 @@ import { Button } from '@shared/ui/Button'
 import { Input } from '@shared/ui/Input'
 import { Card } from '@shared/ui/Card'
 import { setAuthToken } from '@entities/authToken'
+import { safeInternalPath } from '@shared/lib/safeNavigation'
 
 const apiBaseUrl = import.meta.env.VITE_API_URL?.replace(/\/$/, '') ?? ''
 
@@ -16,7 +17,7 @@ interface LoginFormData {
 export function LoginPage() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
-  const redirectTo = searchParams.get('redirect') ?? '/executive'
+  const redirectTo = safeInternalPath(searchParams.get('redirect'))
 
   const [formData, setFormData] = useState<LoginFormData>({ email: '', password: '' })
   const [error, setError] = useState<string | null>(null)

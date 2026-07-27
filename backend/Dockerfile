@@ -15,7 +15,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install Python deps
 COPY requirements.txt requirements-cpu.txt ./
-RUN pip install --no-cache-dir \
+RUN python -m pip install --no-cache-dir \
+        pip==26.1.2 \
+        setuptools==83.0.0 \
+    && pip install --no-cache-dir \
         --index-url https://download.pytorch.org/whl/cpu \
         torch==2.6.0+cpu \
     && pip install --no-cache-dir -r requirements-cpu.txt \

@@ -30,6 +30,9 @@
   dependencies to their current patched compatible releases after the
   production-image vulnerability scan; removed the unused legacy PyPDF2
   distribution.
+- Pinned the production image build tooling to `pip==26.1.2` and
+  `setuptools==83.0.0`, clearing the compatible build-tool findings from the
+  final dependency audit without changing the application framework.
 
 ## 2026-07-27 — Phase 3 production Compose remediation
 

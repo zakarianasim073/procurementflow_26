@@ -3,6 +3,11 @@ set -Eeuo pipefail
 
 SOURCE_DIR="${1:-$(cd "$(dirname "$0")/.." && pwd)}"
 REPORT_DIR="${2:-/tmp/procureflow-test-reports}"
+shift $(( $# >= 2 ? 2 : $# ))
+PYTEST_TARGETS=("$@")
+if [ "${#PYTEST_TARGETS[@]}" -eq 0 ]; then
+  PYTEST_TARGETS=(".")
+fi
 IMAGE="${PROCUREFLOW_TEST_IMAGE:-procureflow-backend:3af01b0}"
 RUN_ID="pf-test-$(date +%s)-$$"
 NETWORK="${RUN_ID}-net"
@@ -53,6 +58,7 @@ docker run --rm --network "$NETWORK" \
   -e CELERY_RESULT_BACKEND="redis://:${REDIS_PASSWORD}@${REDIS}:6379/2" \
   -e CELERY_TASK_ALWAYS_EAGER=true \
   -e CELERY_TASK_EAGER_PROPAGATES=true \
+  -e PYTEST_TARGETS="${PYTEST_TARGETS[*]}" \
   -e OPENAI_API_KEY= -e ANTHROPIC_API_KEY= \
   --entrypoint /bin/sh "$IMAGE" -c '
     cp -a /source /testwork/backend
@@ -63,6 +69,6 @@ docker run --rm --network "$NETWORK" \
       alembic upgrade head &&
       alembic upgrade head &&
       alembic current &&
-      python -m pytest --junitxml=/reports/backend-junit.xml -ra
+      python -m pytest ${PYTEST_TARGETS[*]} --junitxml=/reports/backend-junit.xml -ra
     "
   '

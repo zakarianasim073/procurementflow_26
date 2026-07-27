@@ -69,6 +69,6 @@ docker run --rm --network "$NETWORK" \
       alembic upgrade head &&
       alembic upgrade head &&
       alembic current &&
-      python -m pytest ${PYTEST_TARGETS[*]} --junitxml=/reports/backend-junit.xml -ra
+      python -m pytest \$PYTEST_TARGETS --junitxml=/reports/backend-junit.xml -ra
     "
   '

@@ -18,7 +18,7 @@ cleanup() {
 trap cleanup EXIT
 
 mkdir -p "$REPORT_DIR"
-chmod 700 "$REPORT_DIR"
+chmod 777 "$REPORT_DIR"
 docker network create "$NETWORK" >/dev/null
 docker run -d --name "$POSTGRES" --network "$NETWORK" --tmpfs /var/lib/postgresql/data \
   -e POSTGRES_DB=procureflow_test -e POSTGRES_USER=postgres \
@@ -37,6 +37,7 @@ docker exec "$POSTGRES" pg_isready -U postgres -d procureflow_test >/dev/null
 docker exec "$REDIS" redis-cli -a "$REDIS_PASSWORD" ping >/dev/null
 
 docker run --rm --network "$NETWORK" \
+  --user 0:0 \
   --mount "type=bind,src=${SOURCE_DIR},dst=/source,readonly" \
   --mount "type=bind,src=${REPORT_DIR},dst=/reports" \
   --tmpfs /testwork:rw,size=2g,mode=1777 \

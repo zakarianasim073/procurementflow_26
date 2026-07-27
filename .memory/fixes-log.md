@@ -77,3 +77,6 @@
 - Added a repeatable isolated backend-suite runner using disposable PostgreSQL
   17 and authenticated Redis, clean Alembic migration, JUnit output and
   guaranteed container/network teardown.
+- Updated four async API suites to HTTPX's supported `ASGITransport` interface;
+  removal of the obsolete `AsyncClient(app=...)` argument had caused 79 setup
+  errors rather than application test results.

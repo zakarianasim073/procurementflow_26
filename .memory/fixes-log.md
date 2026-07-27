@@ -21,6 +21,8 @@
 - Preserved the repository-root/backend filesystem relationship inside the
   container at `/workspace/backend`, which application runtime-path discovery
   requires on Linux, and placed Playwright browsers in a shared non-root path.
+- Added the missing pinned `pypdf` runtime dependency discovered by importing
+  the actual FastAPI application inside the CPU image.
 
 ## 2026-07-27 — Phase 3 production Compose remediation
 

@@ -95,3 +95,5 @@
   its 64 parsed items exactly match the frozen parser contract.
 - Corrected the production PgBouncer listener to port 6432, matching the
   application connection URL and container health check.
+- Corrected worker health checks to expand each container hostname via a shell
+  and forced frontend/proxy health probes to IPv4 loopback.

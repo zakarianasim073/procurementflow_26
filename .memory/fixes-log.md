@@ -84,3 +84,6 @@
   aligned its test with the authoritative `task_annotations` configuration.
 - Exposed the root Compose contract inside the isolated backend test copy so
   queue-worker topology tests do not depend on the caller's working directory.
+- Restored the authoritative versioned regulatory seed, pilot-tenant profiles
+  and MOU-gated onboarding assets omitted from the release snapshot; isolated
+  test databases now seed regulatory rules after migration.

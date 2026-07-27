@@ -1,0 +1,104 @@
+{
+  "_comment": "W-011 pilot tenants. MOU gate: onboarding refuses any profile with mou_signed != true. Capability profile shape matches EligibilityComplianceAgent inputs.",
+  "tenants": [
+    {
+      "tenant_id": "pilot-firm-01",
+      "slug": "pilot-firm-01",
+      "mou_signed": true,
+      "profile": {
+        "company_name": "Pilot Firm 01 (Construction) Ltd",
+        "years_experience": 12,
+        "avg_turnover": 180000000,
+        "equipment": ["excavator", "mixer", "roller", "dump truck"],
+        "engineers_count": 8,
+        "licenses": ["trade", "bwdb_enlistment"],
+        "similar_works": [
+          {"title": "Embankment rehabilitation", "value_bdt": 95000000},
+          {"title": "Regulator construction", "value_bdt": 60000000}
+        ],
+        "preferred_agencies": ["BWDB", "LGED"],
+        "districts": ["Chattogram", "Feni"]
+      }
+    },
+    {
+      "tenant_id": "pilot-firm-02",
+      "slug": "pilot-firm-02",
+      "mou_signed": true,
+      "profile": {
+        "company_name": "Pilot Firm 02 Engineers & Builders",
+        "years_experience": 8,
+        "avg_turnover": 90000000,
+        "equipment": ["excavator", "mixer", "vibrator"],
+        "engineers_count": 5,
+        "licenses": ["trade", "pwd_enlistment"],
+        "similar_works": [
+          {"title": "Office building construction", "value_bdt": 45000000},
+          {"title": "Road and drain works", "value_bdt": 30000000}
+        ],
+        "preferred_agencies": ["PWD"],
+        "districts": ["Dhaka", "Gazipur"]
+      }
+    },
+    {
+      "tenant_id": "pilot-firm-03",
+      "slug": "pilot-firm-03",
+      "mou_signed": true,
+      "profile": {
+        "company_name": "Pilot Firm 03 Traders & Construction",
+        "years_experience": 15,
+        "avg_turnover": 250000000,
+        "equipment": ["excavator", "dredger", "barge", "roller"],
+        "engineers_count": 11,
+        "licenses": ["trade", "bwdb_enlistment", "riverine_works"],
+        "similar_works": [
+          {"title": "River bank protection", "value_bdt": 140000000},
+          {"title": "Dredging package", "value_bdt": 85000000},
+          {"title": "Flood control embankment", "value_bdt": 70000000}
+        ],
+        "preferred_agencies": ["BWDB"],
+        "districts": ["Barishal", "Patuakhali", "Bhola"]
+      }
+    },
+    {
+      "tenant_id": "pilot-firm-04",
+      "slug": "pilot-firm-04",
+      "mou_signed": true,
+      "profile": {
+        "company_name": "Pilot Firm 04 Development Ltd",
+        "years_experience": 6,
+        "avg_turnover": 45000000,
+        "equipment": ["mixer", "roller"],
+        "engineers_count": 5,
+        "licenses": ["trade", "lged_enlistment"],
+        "similar_works": [
+          {"title": "Rural road improvement", "value_bdt": 25000000},
+          {"title": "School building", "value_bdt": 18000000}
+        ],
+        "preferred_agencies": ["LGED"],
+        "districts": ["Rajshahi", "Natore"]
+      }
+    },
+    {
+      "tenant_id": "pilot-firm-05",
+      "slug": "pilot-firm-05",
+      "mou_signed": true,
+      "profile": {
+        "company_name": "Pilot Firm 05 JV Partners",
+        "years_experience": 20,
+        "avg_turnover": 400000000,
+        "equipment": ["excavator", "crane", "piling rig", "batching plant", "dump truck"],
+        "engineers_count": 18,
+        "licenses": ["trade", "pwd_enlistment", "bwdb_enlistment"],
+        "similar_works": [
+          {"title": "Bridge approach works", "value_bdt": 220000000},
+          {"title": "Pump station construction", "value_bdt": 130000000},
+          {"title": "Multi-storied government building", "value_bdt": 190000000}
+        ],
+        "preferred_agencies": ["PWD", "BWDB", "LGED"],
+        "districts": ["Khulna", "Jashore", "Satkhira"]
+      }
+    }
+  ]
+}
+
+

@@ -72,6 +72,7 @@ docker run --rm --network "$NETWORK" \
       alembic upgrade head &&
       alembic upgrade head &&
       alembic current &&
+      python scripts/seed_regulatory_rules.py &&
       python -m pytest \$PYTEST_TARGETS --junitxml=/reports/backend-junit.xml -ra
     "
   '

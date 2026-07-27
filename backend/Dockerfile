@@ -5,6 +5,12 @@ ENV PYTHONPATH=/workspace/backend:/workspace \
 
 WORKDIR /workspace/backend
 
+RUN groupadd --system procureflow \
+    && useradd --system --gid procureflow --home-dir /workspace/backend procureflow \
+    && mkdir -p /data/uploads /data/outputs /data/tenders /data/.procurementflow-system \
+        /workspace/backend/runtime \
+    && chown -R procureflow:procureflow /data /workspace/backend
+
 # Install system deps
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
@@ -26,15 +32,9 @@ RUN python -m pip install --no-cache-dir \
     && rm -rf /var/lib/apt/lists/* /root/.cache/pip \
     && find /usr/local/lib/python3.12/site-packages -type d -name '__pycache__' -prune -exec rm -rf {} +
 
-# Copy app
-COPY . .
-
-# Create runtime directories
-RUN mkdir -p /data/uploads /data/outputs /data/tenders /data/.procurementflow-system \
-    /workspace/backend/runtime
-RUN groupadd --system procureflow \
-    && useradd --system --gid procureflow --home-dir /workspace/backend procureflow \
-    && chown -R procureflow:procureflow /workspace /data /ms-playwright
+# Copy app without a duplicate recursive ownership layer. Playwright's browser
+# files remain root-owned but world-readable/executable for the runtime user.
+COPY --chown=procureflow:procureflow . .
 
 USER procureflow
 

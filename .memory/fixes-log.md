@@ -71,3 +71,6 @@
 - Made application telemetry setup idempotent across repeated lifespan runs.
 - Added application-side UUID generation to the shared ORM primary-key mixin,
   fixing inserts into knowledge-graph and other UUID-backed models.
+- Replaced the backend image's post-copy recursive ownership rewrite with
+  `COPY --chown`, preserving non-root runtime access without duplicating the
+  approximately 927 MB application/browser ownership layer.

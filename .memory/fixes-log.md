@@ -63,3 +63,11 @@
 - Explicitly injects the protected production environment file into FastAPI,
   every Celery worker and the migration service; Compose interpolation alone
   does not populate arbitrary container environment variables.
+
+## 2026-07-27 — Phase 3.6 deterministic lifecycle fixes
+
+- Made repeated FastAPI lifespan runs preserve router-registration state so
+  TestClient sessions cannot register the complete API graph repeatedly.
+- Made application telemetry setup idempotent across repeated lifespan runs.
+- Added application-side UUID generation to the shared ORM primary-key mixin,
+  fixing inserts into knowledge-graph and other UUID-backed models.

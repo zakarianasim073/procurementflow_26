@@ -124,6 +124,9 @@ def configure_telemetry(app: Any, engine: Any = None) -> bool:
     """
     global _metrics
 
+    if getattr(app.state, "telemetry_configured", False):
+        return bool(getattr(app.state, "telemetry_enabled", False))
+
     enabled = os.getenv("OTEL_ENABLED", "true").strip().lower() in {"1", "true", "yes", "on"}
     if not enabled:
         logger.info("OpenTelemetry disabled (set OTEL_ENABLED=true to enable)")

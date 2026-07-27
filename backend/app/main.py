@@ -201,10 +201,12 @@ async def lifespan(app: FastAPI):
     app.state.agent_runtime_ready = False
     app.state.agent_runtime_error = None
     app.state.agent_runtime_task = None
-    app.state.api_routers_loaded = False
+    if not hasattr(app.state, "api_routers_loaded"):
+        app.state.api_routers_loaded = False
     app.state.api_routers_error = None
     app.state.api_router_task = None
-    app.state.core_api_routers_loaded = False
+    if not hasattr(app.state, "core_api_routers_loaded"):
+        app.state.core_api_routers_loaded = False
     
     for d in ['uploads', 'outputs', 'data', 'tenders']:
         ensure_dir(f"{boq_settings.BASE_DIR}/{d}")
@@ -257,7 +259,9 @@ async def lifespan(app: FastAPI):
     try:
         from app.db.base import get_engine
         from app.services.telemetry import configure_telemetry
-        app.state.telemetry_enabled = configure_telemetry(app, get_engine())
+        if not getattr(app.state, "telemetry_configured", False):
+            app.state.telemetry_enabled = configure_telemetry(app, get_engine())
+            app.state.telemetry_configured = True
     except Exception as e:
         logger.warning(f"Telemetry setup skipped: {e}")
 

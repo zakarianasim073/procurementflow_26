@@ -3,6 +3,7 @@
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy import MetaData
 from datetime import datetime
+import uuid
 from typing import Optional
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import DateTime, String, Integer
@@ -36,5 +37,5 @@ class TimestampMixin:
 class UUIDMixin:
     """Mixin for UUID primary key"""
     id: Mapped[str] = mapped_column(
-        String(36), primary_key=True, nullable=False
+        String(36), primary_key=True, nullable=False, default=lambda: str(uuid.uuid4())
     )

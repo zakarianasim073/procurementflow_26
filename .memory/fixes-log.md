@@ -74,3 +74,6 @@
 - Replaced the backend image's post-copy recursive ownership rewrite with
   `COPY --chown`, preserving non-root runtime access without duplicating the
   approximately 927 MB application/browser ownership layer.
+- Added a repeatable isolated backend-suite runner using disposable PostgreSQL
+  17 and authenticated Redis, clean Alembic migration, JUnit output and
+  guaranteed container/network teardown.

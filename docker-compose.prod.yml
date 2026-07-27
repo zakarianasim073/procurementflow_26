@@ -115,6 +115,10 @@ services:
     networks:
       - procurementflow-net
 
+networks:
+  procurementflow-net:
+    driver: bridge
+
 volumes:
   certbot_www:
   letsencrypt:

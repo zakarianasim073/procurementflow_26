@@ -35,6 +35,9 @@
   final dependency audit without changing the application framework.
 - Removed the remaining TLS-certificate bypasses from the portal explorer and
   material-price crawler so all production HTTP clients verify certificates.
+- Declared the production Compose `procurementflow-net` bridge explicitly;
+  all-profile rendering previously failed because services referenced an
+  undefined top-level network.
 
 ## 2026-07-27 — Phase 3 production Compose remediation
 

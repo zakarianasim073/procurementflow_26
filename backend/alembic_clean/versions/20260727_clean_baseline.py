@@ -32,6 +32,9 @@ def upgrade() -> None:
         # vector type must exist before the body containing vector(384) parses.
         schema_body = schema_sql.split("\n\n", 1)[1]
         cursor.execute(schema_body)
+        # pg_dump deliberately clears search_path while restoring qualified
+        # objects. Restore Alembic's expected path before it records the head.
+        cursor.execute("SET search_path TO public")
 
 
 def downgrade() -> None:
